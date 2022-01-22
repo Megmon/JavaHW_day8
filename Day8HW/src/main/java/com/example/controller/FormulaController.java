@@ -2,6 +2,8 @@ package com.example.controller;
 
 import java.util.Locale;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.domain.formula.model.MFormula;
+import com.example.domain.formula.service.FormulaService;
 import com.example.form.SignupFormulaForm;
 
 import lombok.extern.slf4j.Slf4j;
@@ -20,11 +24,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FormulaController {
 
-//	@Autowired
-//	private FormulaService formulaService;
+	@Autowired
+	private FormulaService formulaService;
 	
-//	@Autowired
-//	private ModelMapper modelMapper;
+	@Autowired
+	private ModelMapper modelMapper;
 	
 	
 	//計算式登録画面を表示
@@ -49,10 +53,10 @@ public class FormulaController {
 		log.info(form.toString());
 		
 		//formをMFormulaクラスに変換
-//		MFormula formula = modelMapper.map(form,MFormula.class);
+		MFormula formula = modelMapper.map(form,MFormula.class);
 		
 		//計算式登録
-//		formulaService.signupFormula(formula);
+		formulaService.signupFormula(formula);
 		
 		//計算式画面にリダイレクト（画面更新）
 		return "redirect:/formula/formula";
