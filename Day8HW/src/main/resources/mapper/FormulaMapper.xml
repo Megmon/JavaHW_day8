@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatics.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapperとxmlのマッピング -->
+<mapper namespace="com.example.repository.FormulaMapper">
+
+	<!-- 計算式1件登録 -->
+	<insert id="insertOne">
+		insert into formula_mst(
+			formula_name,
+			formula_year,
+			formula_month,
+			formula_day
+		)
+		values(
+			#{formulaName},
+			#{formulaYear},
+			#{formulaMonth},
+			#{formulaDay}
+		)
+	</insert>
+
+</mapper>
