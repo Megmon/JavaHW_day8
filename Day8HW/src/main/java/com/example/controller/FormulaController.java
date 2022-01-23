@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.modelmapper.ModelMapper;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.formula.model.MFormula;
+import com.example.domain.formula.model.MNewFormula;
 import com.example.domain.formula.service.FormulaService;
 import com.example.form.SignupFormulaForm;
 
@@ -34,6 +36,14 @@ public class FormulaController {
 	//計算式登録画面を表示
 	@GetMapping("/formula")
 	public String getFormula(Model model,Locale locale,@ModelAttribute SignupFormulaForm form) {
+	
+		//計算式一覧を取得
+		List<MFormula> formulaList=formulaService.getFormula();
+		log.info(formulaList.toString());
+		
+		//Modelに登録
+		model.addAttribute("formulaList", formulaList);
+		log.info(model.toString());
 		
 		//計算式登録画面へ遷移
 		return "formula/formula";
@@ -53,7 +63,7 @@ public class FormulaController {
 		log.info(form.toString());
 		
 		//formをMFormulaクラスに変換
-		MFormula formula = modelMapper.map(form,MFormula.class);
+		MNewFormula formula = modelMapper.map(form,MNewFormula.class);
 		
 		//計算式登録
 		formulaService.signupFormula(formula);

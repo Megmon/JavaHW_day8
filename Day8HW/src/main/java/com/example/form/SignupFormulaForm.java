@@ -9,15 +9,15 @@ import lombok.Data;
 public class SignupFormulaForm {
 	
 	@NotBlank
-	private String formulaName;
+	private String newFormulaName;
 	
 	@NotNull
-	private int formulaYear;
+	private int newFormulaYear;
 	
 	@NotNull
-	private int formulaMonth;
+	private int newFormulaMonth;
 	
 	@NotNull
-	private int formulaDay;
+	private int newFormulaDay;
 	
 }

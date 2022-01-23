@@ -13,11 +13,21 @@
 			formula_day
 		)
 		values(
-			#{formulaName},
-			#{formulaYear},
-			#{formulaMonth},
-			#{formulaDay}
+			#{newFormulaName},
+			#{newFormulaYear},
+			#{newFormulaMonth},
+			#{newFormulaDay}
 		)
 	</insert>
+	
+	<!-- 計算式複数件取得 -->
+	<select id="findMany" resultType="MFormula">
+		select
+			formula_name,
+			formula_year,
+			formula_month,
+			formula_day
+		from formula_mst
+	</select>
 
 </mapper>

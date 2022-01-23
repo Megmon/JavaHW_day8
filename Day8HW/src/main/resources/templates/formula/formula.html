@@ -22,32 +22,32 @@
 				<div class="form-group row">
 					<label for="formulaName" class="col-sm-2 col-form-label" >式名</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" th:field="*{formulaName}" th:errorclass="is-invalid"/>
-						<div class="invalid-feedback" th:errors="*{formulaName}"></div>
+						<input type="text" class="form-control" th:field="*{newFormulaName}" th:errorclass="is-invalid"/>
+						<div class="invalid-feedback" th:errors="*{newFormulaName}"></div>
 					</div>
 				</div>
 				<!-- 加減算値_年 -->
 				<div class="form-group row">
 					<label for="formulaYear" class="col-sm-2 col-form-label">加減算値　年</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" th:field="*{formulaYear}" th:errorclass="is-invalid"/>
-						<div class="invalid-feedback" th:errors="*{formulaYear}"></div>
+						<input type="text" class="form-control" th:field="*{newFormulaYear}" th:errorclass="is-invalid"/>
+						<div class="invalid-feedback" th:errors="*{newFormulaYear}"></div>
 					</div>
 				</div>
 				<!-- 加減算値_月 -->
 				<div class="form-group row">
 					<label for="formulaMonth" class="col-sm-2 col-form-label">加減算値　月</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" th:field="*{formulaMonth}" th:errorclass="is-invalid"/>
-						<div class="invalid-feedback" th:errors="*{formulaMonth}"></div>
+						<input type="text" class="form-control" th:field="*{newFormulaMonth}" th:errorclass="is-invalid"/>
+						<div class="invalid-feedback" th:errors="*{newFormulaMonth}"></div>
 					</div>
 				</div>
 				<!-- 加減算値_日 -->
 				<div class="form-group row">
 					<label for="formulaDay" class="col-sm-2 col-form-label">加減算値　日</label>
 					<div class="col-sm-10">
-						<input type="text" class="form-control" th:field="*{formulaDay}" th:errorclass="is-invalid"/>
-						<div class="invalid-feedback" th:errors="*{formulaDay}"></div>
+						<input type="text" class="form-control" th:field="*{newFormulaDay}" th:errorclass="is-invalid"/>
+						<div class="invalid-feedback" th:errors="*{newFormulaDay}"></div>
 					</div>
 				</div>
 				<!-- 登録ボタン -->
@@ -62,16 +62,18 @@
 				<thead class="thead-light">
 					<tr>
 						<th class="th-width">式名</th>
-						<th class="th-width">加減算値</th>
-						<th class="th-width">計算結果</th>
+						<th class="th-width">加減算値　年</th>
+						<th class="th-width">加減算値　月</th>
+						<th class="th-width">加減算値　日</th>
 						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
+					<tr th:each="item:${formulaList}">
+						<td th:text="${item.formulaName}"></td>
+						<td th:text="${item.formulaYear}"></td>
+						<td th:text="${item.formulaMonth}"></td>
+						<td th:text="${item.formulaDay}"></td>
 						<td></td>
 					</tr>
 				</tbody>
