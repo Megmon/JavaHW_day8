@@ -22,12 +22,14 @@
 	
 	<!-- 計算式複数件取得 -->
 	<select id="findMany" resultType="MFormula">
-		select
-			formula_name,
-			formula_year,
-			formula_month,
-			formula_day
+		select *
 		from formula_mst
 	</select>
+	
+	<!-- 計算式削除 -->
+	<delete id="deleteOne">
+		delete from formula_mst
+		where formula_id=#{formulaId}
+	</delete>
 
 </mapper>

@@ -29,4 +29,11 @@ public class FormuraServiceImpl implements FormulaService {
 		
 		return mapper.findMany();
 	}
+	
+	//計算式削除
+	@Override
+	public void deleteFormulaOne(int formulaId) {
+		
+		int count = mapper.deleteOne(formulaId);
+	}
 }

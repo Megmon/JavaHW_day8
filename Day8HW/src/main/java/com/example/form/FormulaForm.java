@@ -6,7 +6,9 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Data
-public class SignupFormulaForm {
+public class FormulaForm {
+	
+	private int formulaId;
 	
 	@NotBlank
 	private String newFormulaName;

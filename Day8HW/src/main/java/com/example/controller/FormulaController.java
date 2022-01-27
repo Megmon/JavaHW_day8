@@ -11,13 +11,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.formula.model.MFormula;
 import com.example.domain.formula.model.MNewFormula;
 import com.example.domain.formula.service.FormulaService;
-import com.example.form.SignupFormulaForm;
+import com.example.form.FormulaForm;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -35,11 +36,11 @@ public class FormulaController {
 	
 	//計算式登録画面を表示
 	@GetMapping("/formula")
-	public String getFormula(Model model,Locale locale,@ModelAttribute SignupFormulaForm form) {
+	public String getFormula(Model model,Locale locale,@ModelAttribute FormulaForm form) {
 	
 		//計算式一覧を取得
 		List<MFormula> formulaList=formulaService.getFormula();
-		log.info(formulaList.toString());
+		log.info("計算式登録画面表示");
 		
 		//Modelに登録
 		model.addAttribute("formulaList", formulaList);
@@ -50,8 +51,8 @@ public class FormulaController {
 	}
 	
 	//計算式登録処理
-	@PostMapping("/formula")
-	public String postFormula(Model model,Locale locale,@ModelAttribute @Validated SignupFormulaForm form,BindingResult bindingResult) {
+	@PostMapping(value="/formula",params="regist")
+	public String postFormula(Model model,Locale locale,@ModelAttribute @Validated FormulaForm form,BindingResult bindingResult) {
 		
 		//入力チェック結果
 		if(bindingResult.hasErrors()) {			
@@ -67,6 +68,23 @@ public class FormulaController {
 		
 		//計算式登録
 		formulaService.signupFormula(formula);
+		
+		//計算式画面にリダイレクト（画面更新）
+		return "redirect:/formula/formula";
+	}
+	
+	//計算式削除処理
+	@GetMapping("/formula/{formulaId}")
+	public String deleteFormula(FormulaForm form,Model model,@PathVariable("formulaId") int formulaId) {
+
+		
+		log.info("削除ボタン押した");
+	
+		//削除対象の計算式を取得
+		
+		
+		//計算式を削除
+		formulaService.deleteFormulaOne(formulaId);
 		
 		//計算式画面にリダイレクト（画面更新）
 		return "redirect:/formula/formula";
