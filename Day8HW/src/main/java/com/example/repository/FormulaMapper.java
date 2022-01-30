@@ -14,8 +14,11 @@ public interface FormulaMapper {
 	//計算式登録
 	public int insertOne(MNewFormula formula);
 	
-	//計算式取得
+	//計算式取得（全件）
 	public List<MFormula> findMany();
+	
+	//計算式取得（1件）
+	public MFormula findOneFormula(int formulaId);
 	
 	//計算式削除
 	public int deleteOne(@Param("formulaId") int formulaId);

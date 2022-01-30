@@ -63,51 +63,49 @@
 					</div>
 			</div>
 		</form>
-			<!-- 一覧表示 -->
-<!-- 		<form action="/formula/formula" method="post" th:object="${formulaForm}"> -->
-			<div>
-				<table class="table table-striped table-borderd table-hover">
-					<thead class="thead-light">
-						<tr>
-							<th class="th-width">式名</th>
-							<th class="th-width">加減算値　年</th>
-							<th class="th-width">加減算値　月</th>
-							<th class="th-width">加減算値　日</th>
-							<th class="th-width"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr th:each="item:${formulaList}">
-							<td th:text="${item.formulaName}"></td>
-							<td th:text="${item.formulaYear}"></td>
-							<td th:text="${item.formulaMonth}"></td>
-							<td th:text="${item.formulaDay}"></td>
-							<td>
-								<button type="submit" class="btn btn-primary" name="update">更新</button>
-								<button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" th:attrappend="data-target=${item.formulaId}" data-backdrop="false">削除</button>
+		<!-- 一覧表示 -->
+		<div>
+			<table class="table table-striped table-borderd table-hover">
+				<thead class="thead-light">
+					<tr>
+						<th class="th-width">式名</th>
+						<th class="th-width">加減算値　年</th>
+						<th class="th-width">加減算値　月</th>
+						<th class="th-width">加減算値　日</th>
+						<th class="th-width"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item:${formulaList}">
+						<td th:text="${item.formulaName}"></td>
+						<td th:text="${item.formulaYear}"></td>
+						<td th:text="${item.formulaMonth}"></td>
+						<td th:text="${item.formulaDay}"></td>
+						<td>
+							<a class="btn btn-primary" th:href="@{'/formula/formula/'+${item.formulaId}+'/update'}">更新</a>
+							<button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" th:attrappend="data-target=${item.formulaId}" data-backdrop="false">削除</button>
 							<!-- 削除ボタンのモーダル -->
 							<div class="modal fade" id="deleteModal" th:attrappend="id=${item.formulaId}" tabindex="-1" role="dialog" aria-labelledby="basicModal">
     							<div class="modal-dialog">
         							<div class="modal-content">
-            							<div class="modal-header">
-                							<h4 class="modal-title">削除確認</h4>
-            							</div>
+           								<div class="modal-header">
+               								<h4 class="modal-title">削除確認</h4>
+           								</div>
 										<div class="modal-body">
 											<label>計算式を削除しますか？</label>
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
-											<a class="btn btn-danger" th:href="@{'/formula/formula/'+${item.formulaId}}">削除</a>
+											<a class="btn btn-danger" th:href="@{'/formula/formula/'+${item.formulaId}+'/delete'}">削除</a>
 										</div>
 									</div>
 								</div>
 							</div>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-<!-- 		</form> -->
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </body>
 </html>

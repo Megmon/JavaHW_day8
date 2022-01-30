@@ -13,6 +13,9 @@ public interface FormulaService {
 	//計算式取得
 	public List<MFormula> getFormula();
 	
+	//計算式取得（1件）
+	public MFormula getFormulaOne(int formulaId);
+	
 	//計算式削除
 	public void deleteFormulaOne(int formulaId);
 }

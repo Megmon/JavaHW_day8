@@ -30,6 +30,12 @@ public class FormuraServiceImpl implements FormulaService {
 		return mapper.findMany();
 	}
 	
+	//計算式取得（1件）
+	@Override
+	public MFormula getFormulaOne(int formulaId){
+		return mapper.findOneFormula(formulaId);
+	}
+	
 	//計算式削除
 	@Override
 	public void deleteFormulaOne(int formulaId) {

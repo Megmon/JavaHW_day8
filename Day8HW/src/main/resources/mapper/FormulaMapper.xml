@@ -4,6 +4,15 @@
 <!-- Mapperとxmlのマッピング -->
 <mapper namespace="com.example.repository.FormulaMapper">
 
+	<!-- マッピング定義 -->
+	<resultMap type="com.example.domain.formula.model.MFormula" id="formula">
+		<id column="formula_id" property="formulaId"/>
+		<result column="formula_name" property="formulaName"/>
+		<result column="formula_year" property="formulaYear"/>
+		<result column="formula_month" property="formulaMonth"/>
+		<result column="formula_day" property="formulaDay"/>
+	</resultMap>
+
 	<!-- 計算式1件登録 -->
 	<insert id="insertOne">
 		insert into formula_mst(
@@ -24,6 +33,13 @@
 	<select id="findMany" resultType="MFormula">
 		select *
 		from formula_mst
+	</select>
+	
+	<!-- 計算式1件検索 -->
+	<select id="findOneFormula" resultMap="formula">
+		select *
+		from formula_mst
+		where formula_id=#{formulaId}
 	</select>
 	
 	<!-- 計算式削除 -->

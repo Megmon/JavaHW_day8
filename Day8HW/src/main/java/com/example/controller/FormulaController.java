@@ -73,8 +73,20 @@ public class FormulaController {
 		return "redirect:/formula/formula";
 	}
 	
+	//計算式更新処理（フォームに値を渡すまで）
+	@GetMapping("/formula/{formulaId}/update")
+	public void updateFormula(Model model, FormulaForm form,@PathVariable("formulaId") int formulaId) {
+	
+		log.info("更新ボタン押した");
+		//更新対象の計算式を1件取得
+		MFormula formula = formulaService.getFormulaOne(formulaId);
+
+		//フォームに値を渡す
+		form =modelMapper.map(formula,FormulaForm.class);
+	}
+	
 	//計算式削除処理
-	@GetMapping("/formula/{formulaId}")
+	@GetMapping("/formula/{formulaId}/delete")
 	public String deleteFormula(@PathVariable("formulaId") int formulaId) {
 		
 		log.info("削除ボタン押した");
