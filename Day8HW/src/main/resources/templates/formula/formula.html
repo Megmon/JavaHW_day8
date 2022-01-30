@@ -84,7 +84,7 @@
 							<td th:text="${item.formulaDay}"></td>
 							<td>
 								<button type="submit" class="btn btn-primary" name="update">更新</button>
-								<button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" th:attrappend="data-target=${item.formulaId}">削除</button>
+								<button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" th:attrappend="data-target=${item.formulaId}" data-backdrop="false">削除</button>
 							<!-- 削除ボタンのモーダル -->
 							<div class="modal fade" id="deleteModal" th:attrappend="id=${item.formulaId}" tabindex="-1" role="dialog" aria-labelledby="basicModal">
     							<div class="modal-dialog">
@@ -97,7 +97,7 @@
 										</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
-											<a class="btn btn-danger" th:href="@{/formula/formula/${item.formulaId}}">削除</a>
+											<a class="btn btn-danger" th:href="@{'/formula/formula/'+${item.formulaId}}">削除</a>
 										</div>
 									</div>
 								</div>

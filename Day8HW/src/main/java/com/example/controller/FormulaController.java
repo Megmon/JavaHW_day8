@@ -75,14 +75,10 @@ public class FormulaController {
 	
 	//計算式削除処理
 	@GetMapping("/formula/{formulaId}")
-	public String deleteFormula(FormulaForm form,Model model,@PathVariable("formulaId") int formulaId) {
-
+	public String deleteFormula(@PathVariable("formulaId") int formulaId) {
 		
 		log.info("削除ボタン押した");
 	
-		//削除対象の計算式を取得
-		
-		
 		//計算式を削除
 		formulaService.deleteFormulaOne(formulaId);
 		
