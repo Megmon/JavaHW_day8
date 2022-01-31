@@ -41,6 +41,17 @@
 		from formula_mst
 		where formula_id=#{formulaId}
 	</select>
+
+	<!-- 計算式1件更新 -->
+	<update id="updateOneFormula">
+		update formula_mst
+		set
+			formula_name = #{formulaName},
+			formula_year = #{formulaYear},
+			formula_month = #{formulaMonth},
+			formula_day = #{formulaDay}
+		where formula_id = #{formulaId}
+	</update>
 	
 	<!-- 計算式削除 -->
 	<delete id="deleteOne">

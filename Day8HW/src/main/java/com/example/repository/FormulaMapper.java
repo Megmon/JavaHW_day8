@@ -21,6 +21,9 @@ public interface FormulaMapper {
 	//計算式取得（1件）
 	public MUpdateFormula findOneFormula(int formulaId);
 	
+	//計算式更新（1件）
+	public void updateOneFormula(@Param("formulaId") int formulaId,@Param("formulaName") String formulaName,@Param("formulaYear") int formulaYear,@Param("formulaMonth") int formulaMonth,@Param("formulaDay") int formulaDay);
+	
 	//計算式削除
 	public int deleteOne(@Param("formulaId") int formulaId);
 }

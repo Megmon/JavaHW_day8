@@ -38,10 +38,11 @@ public class FormulaController {
 	//計算式登録画面を表示
 	@GetMapping("/formula")
 	public String getFormula(Model model,Locale locale,@ModelAttribute FormulaForm form) {
-	
+
+		log.info("計算式登録画面表示");
+		
 		//計算式一覧を取得
 		List<MFormula> formulaList=formulaService.getFormula();
-		log.info("計算式登録画面表示");
 		
 		//Modelに登録
 		model.addAttribute("formulaList", formulaList);
@@ -53,16 +54,17 @@ public class FormulaController {
 	
 	//計算式登録処理
 	@PostMapping(value="/formula",params="regist")
+	//@GetMapping("/formula/{formulaId}/regist")
 	public String postFormula(Model model,Locale locale,@ModelAttribute @Validated FormulaForm form,BindingResult bindingResult) {
-		
+
+		log.info("登録ボタン押した");
+		log.info(form.toString());
 		//入力チェック結果
 		if(bindingResult.hasErrors()) {			
 			log.info(bindingResult.toString());			
 			//エラーがある場合は登録画面に戻る
 			return getFormula(model,locale,form);
 		}
-		
-		log.info(form.toString());
 		
 		//formをMFormulaクラスに変換
 		MNewFormula formula = modelMapper.map(form,MNewFormula.class);
@@ -76,9 +78,9 @@ public class FormulaController {
 	
 	//計算式更新処理（フォームに値を渡すまで）
 	@GetMapping("/formula/{formulaId}/update")
-	public String updateFormula(Model model, FormulaForm form,@PathVariable("formulaId") int formulaId) {
+	public String updateFormula1(Model model, FormulaForm form,@PathVariable("formulaId") int formulaId) {
 	
-		log.info("更新ボタン押した");
+		log.info("修正ボタン押した");
 		
 		//更新対象の計算式を1件取得
 		MUpdateFormula formula = formulaService.getFormulaOne(formulaId);
@@ -92,13 +94,34 @@ public class FormulaController {
 		
 		//計算式一覧を取得
 		List<MFormula> formulaList=formulaService.getFormula();
-		log.info("計算式登録画面表示");
 		
 		//Modelに登録
 		model.addAttribute("formulaList", formulaList);
-		log.info(model.toString());
 		
 		return "formula/formula";
+	}
+
+	//計算式更新処理（フォームの値を更新）
+	@PostMapping(value="/formula",params="update")
+	public String updateFormula2(Model model,Locale locale,@ModelAttribute @Validated FormulaForm form,BindingResult bindingResult) {
+
+		log.info("更新ボタン押した");
+		log.info(form.toString());
+		//入力チェック結果
+		if(bindingResult.hasErrors()) {			
+			log.info(bindingResult.toString());			
+			//エラーがある場合は登録画面に戻る
+			return getFormula(model,locale,form);
+		}
+		
+		//formをMFormulaクラスに変換
+		MNewFormula formula = modelMapper.map(form,MNewFormula.class);
+		
+		//計算式更新
+		formulaService.updateFormulaOne(form.getFormulaId(),form.getNewFormulaName(),form.getNewFormulaYear(),form.getNewFormulaMonth(),form.getNewFormulaDay());		
+		
+		//計算式画面にリダイレクト（画面更新）
+		return "redirect:/formula/formula";
 	}
 	
 	//計算式削除処理

@@ -36,6 +36,12 @@ public class FormuraServiceImpl implements FormulaService {
 	public MUpdateFormula getFormulaOne(int formulaId){
 		return mapper.findOneFormula(formulaId);
 	}
+
+	//計算式更新（1件）
+	@Override
+	public void updateFormulaOne(int formulaId,String forumulaName,int formulaYear,int formulaMonth,int formulaDay){
+		mapper.updateOneFormula(formulaId,forumulaName,formulaYear,formulaMonth,formulaDay);
+	}
 	
 	//計算式削除
 	@Override

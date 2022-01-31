@@ -17,6 +17,9 @@ public interface FormulaService {
 	//計算式取得（1件）
 	public MUpdateFormula getFormulaOne(int formulaId);
 	
+	//計算式更新（1件）
+	public void updateFormulaOne(int formulaId,String forumulaName,int formulaYear,int formulaMonth,int formulaDay);
+	
 	//計算式削除
 	public void deleteFormulaOne(int formulaId);
 }

@@ -59,7 +59,8 @@
 					</div>
 					<!-- 登録ボタン -->
 					<div class="text-right">
-						<button type="submit" class="btn btn-primary" name="regist">登録</button>
+						<button type="submit" class="btn btn-primary" name="regist" th:disabled="${{formulaId}==0}">登録</button>
+						<button type="submit" class="btn btn-primary" name="update" th:disabled="${{formulaId}!=0}">更新</button>
 					</div>
 			</div>
 		</form>
@@ -82,7 +83,7 @@
 						<td th:text="${item.formulaMonth}"></td>
 						<td th:text="${item.formulaDay}"></td>
 						<td>
-							<a class="btn btn-primary" th:href="@{'/formula/formula/'+${item.formulaId}+'/update'}">更新</a>
+							<a class="btn btn-primary" th:href="@{'/formula/formula/'+${item.formulaId}+'/update'}">修正</a>
 							<button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal" th:attrappend="data-target=${item.formulaId}" data-backdrop="false">削除</button>
 							<!-- 削除ボタンのモーダル -->
 							<div class="modal fade" id="deleteModal" th:attrappend="id=${item.formulaId}" tabindex="-1" role="dialog" aria-labelledby="basicModal">
