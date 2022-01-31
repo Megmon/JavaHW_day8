@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.example.domain.formula.model.MFormula;
 import com.example.domain.formula.model.MNewFormula;
+import com.example.domain.formula.model.MUpdateFormula;
 
 @Mapper
 public interface FormulaMapper {
@@ -18,7 +19,7 @@ public interface FormulaMapper {
 	public List<MFormula> findMany();
 	
 	//計算式取得（1件）
-	public MFormula findOneFormula(int formulaId);
+	public MUpdateFormula findOneFormula(int formulaId);
 	
 	//計算式削除
 	public int deleteOne(@Param("formulaId") int formulaId);

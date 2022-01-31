@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.domain.formula.model.MFormula;
 import com.example.domain.formula.model.MNewFormula;
+import com.example.domain.formula.model.MUpdateFormula;
 import com.example.domain.formula.service.FormulaService;
 import com.example.repository.FormulaMapper;
 
@@ -32,7 +33,7 @@ public class FormuraServiceImpl implements FormulaService {
 	
 	//計算式取得（1件）
 	@Override
-	public MFormula getFormulaOne(int formulaId){
+	public MUpdateFormula getFormulaOne(int formulaId){
 		return mapper.findOneFormula(formulaId);
 	}
 	

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.formula.model.MFormula;
 import com.example.domain.formula.model.MNewFormula;
+import com.example.domain.formula.model.MUpdateFormula;
 import com.example.domain.formula.service.FormulaService;
 import com.example.form.FormulaForm;
 
@@ -75,14 +76,29 @@ public class FormulaController {
 	
 	//計算式更新処理（フォームに値を渡すまで）
 	@GetMapping("/formula/{formulaId}/update")
-	public void updateFormula(Model model, FormulaForm form,@PathVariable("formulaId") int formulaId) {
+	public String updateFormula(Model model, FormulaForm form,@PathVariable("formulaId") int formulaId) {
 	
 		log.info("更新ボタン押した");
+		
 		//更新対象の計算式を1件取得
-		MFormula formula = formulaService.getFormulaOne(formulaId);
+		MUpdateFormula formula = formulaService.getFormulaOne(formulaId);
 
 		//フォームに値を渡す
 		form =modelMapper.map(formula,FormulaForm.class);
+		log.info(form.toString());
+		
+		//Modelに登録
+		model.addAttribute("formulaForm", form);
+		
+		//計算式一覧を取得
+		List<MFormula> formulaList=formulaService.getFormula();
+		log.info("計算式登録画面表示");
+		
+		//Modelに登録
+		model.addAttribute("formulaList", formulaList);
+		log.info(model.toString());
+		
+		return "formula/formula";
 	}
 	
 	//計算式削除処理

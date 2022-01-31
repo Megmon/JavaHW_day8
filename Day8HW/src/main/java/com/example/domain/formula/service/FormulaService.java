@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.domain.formula.model.MFormula;
 import com.example.domain.formula.model.MNewFormula;
+import com.example.domain.formula.model.MUpdateFormula;
 
 public interface FormulaService {
 
@@ -14,7 +15,7 @@ public interface FormulaService {
 	public List<MFormula> getFormula();
 	
 	//計算式取得（1件）
-	public MFormula getFormulaOne(int formulaId);
+	public MUpdateFormula getFormulaOne(int formulaId);
 	
 	//計算式削除
 	public void deleteFormulaOne(int formulaId);

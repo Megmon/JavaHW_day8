@@ -5,12 +5,12 @@
 <mapper namespace="com.example.repository.FormulaMapper">
 
 	<!-- マッピング定義 -->
-	<resultMap type="com.example.domain.formula.model.MFormula" id="formula">
+	<resultMap type="com.example.domain.formula.model.MUpdateFormula" id="formula">
 		<id column="formula_id" property="formulaId"/>
-		<result column="formula_name" property="formulaName"/>
-		<result column="formula_year" property="formulaYear"/>
-		<result column="formula_month" property="formulaMonth"/>
-		<result column="formula_day" property="formulaDay"/>
+		<result column="formula_name" property="newFormulaName"/>
+		<result column="formula_year" property="newFormulaYear"/>
+		<result column="formula_month" property="newFormulaMonth"/>
+		<result column="formula_day" property="newFormulaDay"/>
 	</resultMap>
 
 	<!-- 計算式1件登録 -->
