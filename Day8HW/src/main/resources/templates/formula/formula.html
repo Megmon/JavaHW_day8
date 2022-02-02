@@ -57,10 +57,27 @@
 							<div class="invalid-feedback" th:errors="*{newFormulaDay}"></div>
 						</div>
 					</div>
-					<!-- 登録ボタン -->
+					<!-- 登録・更新ボタン -->
 					<div class="text-right">
-						<button type="submit" class="btn btn-primary" name="regist" th:disabled="${{formulaId}==0}">登録</button>
-						<button type="submit" class="btn btn-primary" name="update" th:disabled="${{formulaId}!=0}">更新</button>
+						<button type="submit" class="btn btn-primary" name="regist" th:disabled="__${formulaId}__">登録</button>
+						<button type="button" class="btn btn-primary" name="update" th:disabled="__!${formulaId}__"  data-toggle="modal" data-target="#updateModal" data-backdrop="false">更新</button>
+						<!-- 更新ボタンのモーダル -->
+						<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="basicModal">
+    						<div class="modal-dialog">
+        						<div class="modal-content">
+           							<div class="modal-header">
+               							<h4 class="modal-title">更新確認</h4>
+           							</div>
+									<div class="modal-body">
+										<label>計算式を更新しますか？</label>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+										<button type="submit" class="btn btn-primary" name="update" >更新</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 			</div>
 		</form>
