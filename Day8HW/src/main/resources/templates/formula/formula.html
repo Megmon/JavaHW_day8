@@ -61,6 +61,7 @@
 					<div class="text-right">
 						<button type="submit" class="btn btn-primary" name="regist" th:disabled="__${formulaId}__">登録</button>
 						<button type="button" class="btn btn-primary" name="update" th:disabled="__!${formulaId}__"  data-toggle="modal" data-target="#updateModal" data-backdrop="false">更新</button>
+						<button type="submit" class="btn btn-primary" name="clear" th:disabled="__!${formulaId}__">クリア</button>
 						<!-- 更新ボタンのモーダル -->
 						<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="basicModal">
     						<div class="modal-dialog">

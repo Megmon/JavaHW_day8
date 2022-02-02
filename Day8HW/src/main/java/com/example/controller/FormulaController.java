@@ -124,6 +124,13 @@ public class FormulaController {
 		return "redirect:/formula/formula";
 	}
 	
+	//フォームの値をクリア処理（画面更新することで初期化）
+	@PostMapping(value="/formula",params="clear")
+	public String clearFormula() {
+		return "redirect:/formula/formula";
+	}
+	
+	
 	//計算式削除処理
 	@GetMapping("/formula/{formulaId}/delete")
 	public String deleteFormula(@PathVariable("formulaId") int formulaId) {
