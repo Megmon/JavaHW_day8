@@ -41,9 +41,8 @@ public class CalcServiceImpl implements CalcService{
 		//formulaListとresultsを合わせたresultList作成
 		List<MResult> resultList= new ArrayList<MResult>();
 		for (int i=0; i<formulaList.size();i++) {
-			log.info(formulaList.get(i).toString());
+			//MResultに引数を渡しインスタンス化（引数はコンストラクタで初期値に設定）し、resultListに追加する
 			resultList.add(new MResult(formulaList.get(i).getFormulaName(),formulaList.get(i).getFormulaYear(), formulaList.get(i).getFormulaMonth(), formulaList.get(i).getFormulaDay(), results.get(i)));	
-			log.info(resultList.get(i).toString());
 		}
 		
 		return resultList;
