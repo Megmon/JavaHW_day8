@@ -11,18 +11,12 @@ import com.example.domain.calc.model.MResult;
 import com.example.domain.calc.service.CalcService;
 import com.example.domain.formula.model.MFormula;
 
-import lombok.extern.slf4j.Slf4j;
-
-
 @Service
-@Slf4j
 public class CalcServiceImpl implements CalcService{
 	
 	//計算処理
 	@Override	
 	public List<MResult> getResult(Date baseDate,List<MFormula> formulaList){
-		
-		log.info("計算処理");
 		
 		//計算結果格納用のresults作成
 		List<Date> results= new ArrayList<Date>();

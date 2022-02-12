@@ -43,8 +43,6 @@ public class CalcController {
 	@PostMapping("/calc")
 	public String postCalc(Model model,Locale locale,@ModelAttribute @Validated CalcForm form,BindingResult bindingResult) {
 
-		log.info("計算ボタン押した");
-
 		//入力チェック結果
 		if(bindingResult.hasErrors()) {
 			log.info(bindingResult.toString());
