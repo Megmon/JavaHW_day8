@@ -64,4 +64,5 @@ public class CalcController {
 		
 		return "/calc/calc";
 	}
+
 }
