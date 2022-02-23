@@ -41,6 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 			.authorizeHttpRequests()
 				.antMatchers("/login").permitAll() //直リンクOK
+				.antMatchers("/user/signup").permitAll() //直リンクOK
 				.anyRequest().authenticated(); //それ以外は直リンクNG
 		
 		//ログイン処理

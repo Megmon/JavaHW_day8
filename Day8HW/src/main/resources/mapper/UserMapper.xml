@@ -11,4 +11,19 @@
 	where user_id=#{userId}
 </select>
 
+<!-- ユーザー1件登録 -->
+<insert id="insertOneUser">
+	insert into user_mst(
+		user_id,
+		user_name,
+		password,
+		role
+	)
+	values(
+		#{userId},
+		#{userName},
+		#{password},
+		#{role}
+	)
+</insert>
 </mapper>

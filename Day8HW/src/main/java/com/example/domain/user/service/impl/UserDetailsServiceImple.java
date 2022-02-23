@@ -43,6 +43,7 @@ public class UserDetailsServiceImple implements UserDetailsService{
 		//UserDetails生成
 		UserDetails userDetails = (UserDetails) new User(loginUser.getUserId(),loginUser.getPassword(),authorities);
 		log.info(userDetails.toString());
+		log.info(loginUser.getPassword());
 		
 		return userDetails;
 	}

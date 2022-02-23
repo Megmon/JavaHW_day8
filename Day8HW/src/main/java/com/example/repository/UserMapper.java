@@ -9,4 +9,7 @@ public interface UserMapper {
 
 	//ログインユーザー取得
 	public MUser findLoginUser(String userId);
+	
+	//ユーザー登録
+	public int insertOneUser(MUser user);
 }
