@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void signup(MUser user) {
 
-		user.setRole("GENERAL");
+		user.setRole("ROLE_GENERAL");
 		
 		//パスワード暗号化
 		String rawPassword = user.getPassword();
