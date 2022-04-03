@@ -15,7 +15,7 @@
 		<div class="header border-bottom">
 			<h1 class="h2">日付計算</h1>
 		</div>
-		<form action="/calc/calc" method="post" th:object="${calcForm}">
+		<form th:action="@{/calc/calc}" method="post" th:object="${calcForm}">
 			<!-- 基準日入力 -->
 			<div class="header">
 				<!-- 基準日 -->

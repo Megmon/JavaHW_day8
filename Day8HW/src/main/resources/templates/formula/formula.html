@@ -15,7 +15,7 @@
 		<div class="header border-bottom">
 			<h2>計算式登録</h2>
 		</div>
-		<form action="/formula/formula" method="post" th:object="${formulaForm}">
+		<form th:action="@{/formula/formula}" method="post" th:object="${formulaForm}">
 			<!-- 計算式入力 -->
 			<div class="header">
 					<!-- ID -->

@@ -33,6 +33,7 @@
 	<select id="findMany" resultType="MFormula">
 		select *
 		from formula_mst
+		order by formula_id desc
 	</select>
 	
 	<!-- 計算式1件検索 -->
