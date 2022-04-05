@@ -1,4 +1,11 @@
-#��������e�[�u���͉��L2��
+#DB作成のcreate文
+create database hw8db;
+
+#特権ユーザーの作成（作成したユーザー名とパスワードをapprication.propertiesに記載する）
+create user ユーザー名 identified by 'パスワード';
+grant all on hw8db.* to ユーザー名;
+
+#準備するテーブルは下記2つ
 +-----------------+
 | Tables_in_hw8db |
 +-----------------+
@@ -6,7 +13,7 @@
 | user_mst        |
 +-----------------+
 
-#formula_mst��create��
+#formula_mstのcreate文
 +-------------+
 CREATE TABLE `formula_mst` (
   `formula_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -18,7 +25,23 @@ CREATE TABLE `formula_mst` (
 )
 +-------------+
 
-#user_mst��create��
+#formula_mstデータ追加用insert文
++-------------+
+insert into formula_mst(
+formula_name,
+formula_year,
+formula_month,
+formula_day
+)
+values(
+'100年後',
+100,
+0,
+0
+)
++-------------+
+
+#user_mstのcreate文
 +----------+
 CREATE TABLE `user_mst` (
   `user_id` varchar(30) NOT NULL,
@@ -29,7 +52,18 @@ CREATE TABLE `user_mst` (
 )
 +----------+
 
-#�Ǘ��Ҍ����̕ҏW
-��ʂ��烆�[�U�[��o�^����ƁArole�i�����j�̓f�t�H���g�ŁuROLE_GENERAL�v�ɂȂ�B
-�Ǘ��҃A�J�E���g��role���uROLE_ADMIN�v�ɕύX����ƁA�Ǘ��җp���j���[���\�������B
-role�̕ҏW�͉�ʂ���o���Ȃ��̂�DB�𒼐ڕҏW����B
+#user_mstデータ追加用insert文（管理者）
+パスワードは"password"をハッシュ化した値。ログイン時はpasswordと入力する。
++-------------+
+insert into user_mst(
+admin,
+管理者,
+$2a$08$L6NL92hh1SRfzfQmanMexO/U1oq1U1Z5yRWmUitPaOtqIXVlnHdt6,
+ROLE_ADMIN
+)
++-------------+
+
+#権限の編集
+画面からユーザーを登録した場合、role（権限）はデフォルトで「ROLE_GENERAL」になる。
+roleを「ROLE_ADMIN」に変更すると、管理者用メニューが表示される。
+roleの編集は画面から出来ないので必要に応じてDBを直接更新する。
