@@ -1,0 +1,35 @@
+#準備するテーブルは下記2つ
++-----------------+
+| Tables_in_hw8db |
++-----------------+
+| formula_mst     |
+| user_mst        |
++-----------------+
+
+#formula_mstのcreate文
++-------------+
+CREATE TABLE `formula_mst` (
+  `formula_id` int(11) NOT NULL AUTO_INCREMENT,
+  `formula_name` varchar(20) DEFAULT NULL,
+  `formula_year` int(11) DEFAULT NULL,
+  `formula_month` int(11) DEFAULT NULL,
+  `formula_day` int(11) DEFAULT NULL,
+  PRIMARY KEY (`formula_id`)
+)
++-------------+
+
+#user_mstのcreate文
++----------+
+CREATE TABLE `user_mst` (
+  `user_id` varchar(30) NOT NULL,
+  `user_name` varchar(20) DEFAULT NULL,
+  `password` varchar(80) DEFAULT NULL,
+  `role` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`user_id`)
+)
++----------+
+
+#管理者権限の編集
+画面からユーザーを登録すると、role（権限）はデフォルトで「ROLE_GENERAL」になる。
+管理者アカウントのroleを「ROLE_ADMIN」に変更すると、管理者用メニューが表示される。
+roleの編集は画面から出来ないのでDBを直接編集する。
